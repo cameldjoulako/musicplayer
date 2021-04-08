@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'lecture-page.dart';
-
+import 'player-page.dart';
+/* 
 void main() {
   runApp(
     MaterialApp(
@@ -10,9 +10,25 @@ void main() {
       home: MusicPlayList(),
     ),
   );
+} */
+
+void main() {
+  runApp(MyApp());
 }
 
-class MusicPlayList extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      home: HomePage(),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class HomePage extends StatelessWidget {
   //Titre de la Liste de lecture
   List playList = ['No tears left to cry', 'Imagine', 'Into you'];
 
@@ -47,71 +63,75 @@ class MusicPlayList extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                  constraints: BoxConstraints.expand(
-                    height: 500.0,
+                constraints: BoxConstraints.expand(
+                  height: 400.0,
+                ),
+                padding: EdgeInsets.only(
+                  left: 10.0,
+                  bottom: 5.0,
+                  right: 5.0,
+                ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/ariana.jpeg'),
+                    fit: BoxFit.cover,
                   ),
-                  padding: EdgeInsets.only(
-                    left: 10.0,
-                    bottom: 5.0,
-                    right: 5.0,
-                  ),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/ariana.jpeg'),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(0),
-                    ), //BorderRadius.Only,
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 15.0,
-                        bottom: 20.0,
-                        child: Text(
-                          'Ariana Grande',
-                          style: GoogleFonts.arizonia(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 43.0,
-                            color: Colors.white,
-                          ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(0),
+                  ), //BorderRadius.Only,
+                ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: 15.0,
+                      bottom: 20.0,
+                      child: Text(
+                        'Ariana Grande',
+                        style: GoogleFonts.arizonia(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 43.0,
+                          color: Colors.white,
                         ),
                       ),
-                      Positioned(
-                        right: 10.0,
-                        bottom: 0.0,
-                        child: Column(
-                          children: [
-                            MaterialButton(
-                              color: Colors.blue,
-                              shape: CircleBorder(),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LecturePage(),
-                                  ),
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(25),
-                                child: Icon(
-                                  Icons.play_arrow_rounded,
-                                  color: Colors.white,
-                                  size: 30,
+                    ),
+                    Positioned(
+                      right: 10.0,
+                      bottom: 0.0,
+                      child: Column(
+                        children: [
+                          MaterialButton(
+                            color: Colors.blue,
+                            shape: CircleBorder(),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PlayerPage(),
                                 ),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(25),
+                              child: Icon(
+                                Icons.play_arrow_rounded,
+                                color: Colors.white,
+                                size: 30,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  )),
+                    ),
+                  ],
+                ),
+              ),
               playListSection,
               music(playList[0]),
-              music(playList[1], playing: 1),
+              music(
+                playList[1],
+                playing: 1,
+              ),
               music(playList[2]),
             ],
           ),
@@ -194,8 +214,8 @@ Widget playListSection = Container(
             Text(
               'Show all',
               style: TextStyle(
-                color: Colors.blue,
                 fontSize: 13,
+                color: Colors.blue,
               ),
             ),
           ],
@@ -237,7 +257,7 @@ Function music = (String $title, {playing = 0}) {
         Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
@@ -248,11 +268,9 @@ Function music = (String $title, {playing = 0}) {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.more_vert, color: Colors.grey[500]),
-                  ],
+                Icon(
+                  Icons.more_vert,
+                  color: Colors.grey[500],
                 ),
               ],
             ),
