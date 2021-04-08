@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'player-page.dart';
-/* 
-void main() {
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'PlayMusic App',
-      home: MusicPlayList(),
-    ),
-  );
-} */
 
 void main() {
   runApp(MyApp());
@@ -64,7 +54,7 @@ class HomePage extends StatelessWidget {
             children: [
               Container(
                 constraints: BoxConstraints.expand(
-                  height: 400.0,
+                  height: 500.0,
                 ),
                 padding: EdgeInsets.only(
                   left: 10.0,
@@ -257,8 +247,7 @@ Function music = (String $title, {playing = 0}) {
         Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   '3:16',

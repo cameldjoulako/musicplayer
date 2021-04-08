@@ -39,6 +39,8 @@ class PlayerPage extends StatelessWidget {
 }
 
 Widget playerControl = Container(
+  margin: EdgeInsets.only(top: 50),
+  color: Colors.white,
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -52,9 +54,9 @@ Widget playerControl = Container(
 
 Widget imageAuthor = Container(
   constraints: BoxConstraints.expand(
-    height: 500.0,
+    height: 550.0,
   ),
-  padding: EdgeInsets.only(left: 10.0, bottom: 5.0, right: 5.0),
+  //padding: EdgeInsets.only(left: 10.0, bottom: 5.0, right: 5.0),
   decoration: BoxDecoration(
     image: DecorationImage(
       image: AssetImage('images/ariana.jpeg'),
@@ -69,42 +71,45 @@ Widget imageAuthor = Container(
       left: 130,
       child: titleSection,
     ),
-    Positioned(
-      top: 120,
-      left: 0.0,
-      child: Center(
-        child: Row(
-          children: [
-            Column(
-              children: [artistPictureSection],
-            ),
-          ],
-        ),
-      ),
-    ),
-    //artistPictureSection
+    artistPictureSection,
   ]),
 );
 
 Widget artistPictureSection = Container(
-  height: 300,
-  padding: EdgeInsets.all(0),
-  margin: EdgeInsets.all(1),
+  height: 350,
+  //padding: EdgeInsets.all(0),
+  margin: EdgeInsets.only(top: 200),
   decoration: BoxDecoration(
-      color: Colors.black,
-      image: DecorationImage(
+    color: Colors.white,
+    /* image: DecorationImage(
         image: AssetImage('images/ariana.jpeg'),
         fit: BoxFit.cover,
+      ), */
+    borderRadius: BorderRadius.only(
+      topRight: Radius.circular(50),
+    ),
+  ),
+  child: Stack(
+    alignment: Alignment.center,
+    children: [
+      Container(
+        height: 150,
+        width: 150,
+        color: Colors.grey,
       ),
-      borderRadius: BorderRadius.only(
-        topRight: Radius.circular(40),
-      )),
-  child: Container(),
+      Container(
+        height: 150,
+        width: 150,
+        color: Colors.red,
+      ),
+    ],
+  ),
 );
 
 Widget playingMusicTitle = Container(
+  color: Colors.white,
   margin: EdgeInsets.only(top: 20),
-  padding: EdgeInsets.all(20),
+  padding: EdgeInsets.all(0),
   child: Row(
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisAlignment: MainAxisAlignment.center,
@@ -166,6 +171,7 @@ Widget titleSection = Container(
 );
 
 Widget musicControlButtonSection = Container(
+  color: Colors.white,
   margin: EdgeInsets.only(top: 10),
   padding: EdgeInsets.all(5),
   child: Row(
@@ -223,6 +229,7 @@ Widget musicControlButtonSection = Container(
 );
 
 Widget musicSliderSection = Container(
+  color: Colors.white,
   //margin: EdgeInsets.only(top: 10),
   padding: EdgeInsets.all(5),
   child: Row(
@@ -244,6 +251,7 @@ Widget musicSliderSection = Container(
 );
 
 Widget durationSection = Container(
+    color: Colors.white,
     padding: EdgeInsets.all(5),
     margin: EdgeInsets.only(left: 20, right: 20),
     child: Row(
