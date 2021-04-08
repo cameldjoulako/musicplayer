@@ -28,7 +28,8 @@ class PlayerPage extends StatelessWidget {
         ],
         backgroundColor: Colors.white.withOpacity(0),
       ),
-      body: Center(
+      body: Container(
+        color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [imageAuthor, playerControl],
@@ -39,7 +40,7 @@ class PlayerPage extends StatelessWidget {
 }
 
 Widget playerControl = Container(
-  margin: EdgeInsets.only(top: 50),
+  margin: EdgeInsets.only(top: 45),
   color: Colors.white,
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -61,8 +62,6 @@ Widget imageAuthor = Container(
     image: DecorationImage(
       image: AssetImage('images/ariana.jpeg'),
       fit: BoxFit.cover,
-      colorFilter:
-          ColorFilter.mode(Colors.blue.withOpacity(1), BlendMode.darken),
     ),
   ),
   child: Stack(children: [
@@ -81,10 +80,6 @@ Widget artistPictureSection = Container(
   margin: EdgeInsets.only(top: 200),
   decoration: BoxDecoration(
     color: Colors.white,
-    /* image: DecorationImage(
-        image: AssetImage('images/ariana.jpeg'),
-        fit: BoxFit.cover,
-      ), */
     borderRadius: BorderRadius.only(
       topRight: Radius.circular(50),
     ),
@@ -92,15 +87,36 @@ Widget artistPictureSection = Container(
   child: Stack(
     alignment: Alignment.center,
     children: [
-      Container(
-        height: 150,
-        width: 150,
-        color: Colors.grey,
+      Positioned(
+        top: 65.0,
+        child: Container(
+          height: 250,
+          width: 300,
+          decoration: BoxDecoration(
+            color: Colors.grey[350],
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(50),
+            ),
+          ),
+        ),
       ),
-      Container(
-        height: 150,
-        width: 150,
-        color: Colors.red,
+      Positioned(
+        top: 50.0,
+        child: Container(
+          height: 275,
+          width: 250,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/ariana.jpeg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Colors.blue.withOpacity(1), BlendMode.darken),
+            ),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(50),
+            ),
+          ),
+        ),
       ),
     ],
   ),
@@ -108,8 +124,7 @@ Widget artistPictureSection = Container(
 
 Widget playingMusicTitle = Container(
   color: Colors.white,
-  margin: EdgeInsets.only(top: 20),
-  padding: EdgeInsets.all(0),
+  margin: EdgeInsets.only(bottom: 10),
   child: Row(
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisAlignment: MainAxisAlignment.center,
@@ -252,8 +267,8 @@ Widget musicSliderSection = Container(
 
 Widget durationSection = Container(
     color: Colors.white,
-    padding: EdgeInsets.all(5),
-    margin: EdgeInsets.only(left: 20, right: 20),
+    //padding: EdgeInsets.all(1),
+    margin: EdgeInsets.only(left: 27, right: 27, bottom: 15),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
